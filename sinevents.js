@@ -1,3 +1,6 @@
+// srapes the wiki and print an array of the not recurring events coming up at
+// Noisebridge.
+
 var cheerio = require("cheerio");
 
 var request = require("request");
@@ -5,28 +8,25 @@ var request = require("request");
 
 var url = "https://noisebridge.net/wiki/Noisebridge"
 
-request(url, function(err, res, html){
+var promout = new Promise(
 
-  var $ = cheerio.load(html);
+function(resolve, reject){
+  request(url, function(err, res, html){
+    if(err){
+      reject(err)
+    }
 
-  var lin = $(".vevent");
-  var fruits = [];
-  //console.log(lin.toString())
-  lin.each(function(i, elem) {
-    fruits[i] = $(this).text();
-  });
+    var $ = cheerio.load(html);
 
-  console.log(fruits)
-
-  var sma = cheerio.load(lin.toString())
-
-  var starts = sma(".dtstart");
-
-  //console.log(starts)
-//  console.log(Object.keys(lin));
-//  console.log(lin.children().text().split('\n'))
-
-  for(i=0; i < starts.length; i++){
-//    console.log(starts[i])
-  }
+    var lin = $(".vevent");
+    var events = [];
+    //console.log(lin.toString())
+    lin.each(function(i, elem) {
+      events[i] = $(this).text();
+    });
+    resolve(events)
+  })
 })
+
+
+module.exports =  promout;

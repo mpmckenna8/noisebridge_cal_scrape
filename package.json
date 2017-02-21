@@ -1,0 +1,19 @@
+{
+  "name": "noisebridge_cal_scrape",
+  "version": "0.0.1",
+  "description": "Scrapes out the calendar of stuff going on a Noisebridge hoepfully",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cheerio",
+    "noisebridge"
+  ],
+  "author": "mpmckenna8",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "request": "^2.79.0"
+  }
+}
